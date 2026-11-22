@@ -9,10 +9,79 @@
 .phone{max-width:430px;margin:auto;background:#0a0a0a;min-height:100vh;padding-bottom:40px}
 .top{padding:18px;text-align:center;border-bottom:1px solid #222}
 .top h1{margin:0;letter-spacing:8px} .top p{color:#888;font-size:12px}
-.tabs{display:flex;justify-content:space-around;background:#111;padding:10px 0;position:sticky;top:0;z-index:10}
-.tabs button{background:none;border:none;color:#888;font-size:20px;cursor:pointer} .tabs button.active{color:#fff;border-bottom:2px solid #ff8fab}
+.tabs{display:flex;justify-content:space-around;background:#111;padding:10px}
+.tabs button{background:none;border:none;color:#888;font-size:20px;cursor:pointer}
+.tabs button.on{color:#fff;border-bottom:2px solid #fff}
 .page{display:none;padding:15px} .page.active{display:block}
 .chap{display:none} .chap.active{display:block}
-.narr{text-align:center;color:#aaa;font-style:italic;font-size:13px;margin:15px 0;line-height:1.5}
+.narr{text-align:center;color:#aaa;font-style:italic;font-size:13px;margin:15px 0}
 .chat-box{background:#111;border-radius:15px;padding:12px;margin:10px 0}
-.msg{padding:9px 12px;border-radius:15px;margin:8px 0;max-width:85
+.msg{padding:9px 12px;border-radius:15px;margin:8px 0;max-width:85%;font-size:14px}
+.me{background:#2a2a2a;margin-left:auto} .you{background:#444}
+.name{font-size:11px;color:#ff8fa3;margin-bottom:3px}
+.btn{width:100%;padding:12px;background:#fff;color:#000;border:none;border-radius:20px;font-weight:bold;margin-top:15px}
+.cover{text-align:center;padding:30px 15px}
+.cover h2{font-size:32px;letter-spacing:6px}
+.cover span{color:#ff8fa3}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="top"><h1>CENIZA</h1><p>AU • Airi x Yuta • Historia original</p></div>
+<div class="tabs">
+<button class="on" onclick="show(0,this)">🏠</button>
+<button onclick="show(1,this)">📖</button>
+<button onclick="show(2,this)">💬</button>
+</div>
+
+<div class="page active">
+<div class="cover">
+<h2>CENIZA<br><span>Airi x Yuta</span></h2>
+<p>Cuando todo se quemó, solo quedó ella.<br>Y él, que volvió entre las cenizas.</p>
+<p style="color:#888;font-size:13px">Toca 📖 para leer desde el Capítulo 1</p>
+<button class="btn" onclick="show(1,document.querySelectorAll('.tabs button')[1])">EMPEZAR A LEER</button>
+</div>
+</div>
+
+<div class="page">
+<div id="c1" class="chap active">
+<p class="narr">Capítulo 1 - Cenizas</p>
+<div class="chat-box">
+<p class="name">Airi</p><div class="msg you">Yuta... ¿de verdad te vas?</div>
+<p class="name">Yuta</p><div class="msg me">No me voy. Solo necesito que no me veas arder.</div>
+<p class="name">Airi</p><div class="msg you">Pues ya es tarde. Ya te estoy viendo.</div>
+</div>
+<p class="narr">Airi no lloró. No ese día. Lloró meses después, cuando entendió que el amor también deja ceniza.</p>
+<button class="btn" onclick="next()">Siguiente Capítulo →</button>
+</div>
+<div id="c2" class="chap">
+<p class="narr">Capítulo 2 - Volver</p>
+<div class="chat-box">
+<p class="name">Yuta</p><div class="msg me">Volví.</div>
+<p class="name">Airi</p><div class="msg you">¿A qué? ¿A quemarme otra vez?</div>
+<p class="name">Yuta</p><div class="msg me">A quedarme. Aunque me queme.</div>
+</div>
+<p class="narr">Y por primera vez, Airi sonrió entre las cenizas.</p>
+<p style="text-align:center;color:#ff8fa3">— FIN —<br>Gracias por leer CENIZA ♡</p>
+<button class="btn" onclick="back()">← Volver al Capítulo 1</button>
+</div>
+</div>
+
+<div class="page">
+<h3 style="text-align:center">Extras</h3>
+<p class="narr">Esta es una historia AU creada por ti.<br>Airi x Yuta - CENIZA</p>
+<p style="text-align:center;font-size:13px;color:#888">Si quieres más capítulos, dímelo y te los agrego.</p>
+</div>
+
+</div>
+<script>
+function show(n,btn){
+document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));
+btn.classList.add('on');
+}
+function next(){document.getElementById('c1').classList.remove('active');document.getElementById('c2').classList.add('active');window.scrollTo(0,0)}
+function back(){document.getElementById('c2').classList.remove('active');document.getElementById('c1').classList.add('active');window.scrollTo(0,0)}
+</script>
+</body>
+  </html>
